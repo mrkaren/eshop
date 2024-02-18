@@ -17,16 +17,15 @@ public class ProductController {
     private final CategoryService categoryService;
 
     @GetMapping("/products/{id}")
-    public String productSinglePage(@PathVariable("id") int id, ModelMap modelMap){
+    public String productSinglePage(@PathVariable("id") int id, ModelMap modelMap) {
         Product byId = productService.findById(id);
-        if(byId == null){
+        if (byId == null) {
             return "redirect:/";
         }
         modelMap.addAttribute("product", byId);
         modelMap.addAttribute("categories", categoryService.findAll());
         return "user/singleProduct";
     }
-
 
 
 }
