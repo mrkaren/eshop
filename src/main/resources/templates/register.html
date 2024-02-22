@@ -334,7 +334,7 @@
                         <form action="/user/register" method="post">
                                 <span class="gi-register-wrap gi-register-half">
                                     <label th:text="#{register.first.name}">First Name*</label>
-                                    <input type="text" name="name" placeholder="Enter your first name" required>
+                                    <input type="text" name="name" th:placeholder="#{register.first.name}" required>
                                 </span>
                             <span class="gi-register-wrap gi-register-half">
                                     <label th:text="#{register.last.name}">Last Name*</label>
