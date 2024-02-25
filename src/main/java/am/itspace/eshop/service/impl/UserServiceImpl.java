@@ -25,11 +25,12 @@ public class UserServiceImpl implements UserService {
         user.setActive(false);
         user.setToken(activationToken);
         User save = userRepository.save(user);
-        String verifyUrl = "http://localhost:8081/user/verify?token=" + activationToken;
-        sendMailService.send(user.getEmail(), "Welcome",
-                String.format("Welcome %s . You have successfully registered to our website!!!." +
-                                "Please open %s for activating your account!",
-                        user.getName(), verifyUrl));
+//        String verifyUrl = "http://localhost:8081/user/verify?token=" + activationToken;
+//        sendMailService.send(user.getEmail(), "Welcome",
+//                String.format("Welcome %s . You have successfully registered to our website!!!." +
+//                                "Please open %s for activating your account!",
+//                        user.getName(), verifyUrl));
+        sendMailService.sendWelcomeMail(user);
         return save;
     }
 
