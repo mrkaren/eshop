@@ -27,4 +27,6 @@ public class User {
 
     private String token;
 
+    private String picUrl;
+
 }

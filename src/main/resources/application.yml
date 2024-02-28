@@ -6,19 +6,23 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username:
-    password:
+    username: mailsenderforjava@gmail.com
+    password: iltifceckjkwsohf
     properties:
       mail:
         smtp:
           auth: true
           starttls:
-            enable: true
-
+            enable: true\
   servlet:
     multipart:
       max-file-size: 5MB
       max-request-size: 10MB
+  jpa:
+    hibernate:
+      ddl-auto: none
+  liquibase:
+    change-log: classpath*:db/change-log.xml
 
 server:
   port: 8081
