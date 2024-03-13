@@ -5,6 +5,7 @@ import am.itspace.eshop.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -29,7 +30,7 @@ public class MainController {
     @GetMapping("/")
     public String mainPage(ModelMap modelMap) {
         modelMap.addAttribute("categories", categoryService.findAll());
-        modelMap.addAttribute("products", productService.findAll());
+        modelMap.addAttribute("products", productService.findAll(PageRequest.of(0, 5)));
         return "user/home";
     }
 

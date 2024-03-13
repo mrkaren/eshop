@@ -1,12 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        .pagination {
+            display: inline-block;
+        }
+
+        .pagination a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+        }
+
+        .pagination a.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .pagination a:hover:not(.active) {background-color: #ddd;}
+    </style>
 </head>
 <body>
 Welcome admin
 
 <a href="/admin/product/add">Add product</a>
+
+Products:
+<table>
+    <tr>
+        <th>id</th>
+        <th>name</th>
+    </tr>
+    <tr th:each="product: ${products}">
+        <td th:text="${product.id}"></td>
+        <td th:text="${product.name}"></td>
+    </tr>
+</table>
+
+<div th:if="${products.totalPages > 0}" class="pagination"
+     th:each="pageNumber : ${pageNumbers}">
+    <a th:href="@{/admin/home(size=${products.size}, page=${pageNumber})}"
+       th:text="${pageNumber}"
+       th:class="${pageNumber==products.number + 1} ? active"></a>
+</div>
 </body>
 </html>
